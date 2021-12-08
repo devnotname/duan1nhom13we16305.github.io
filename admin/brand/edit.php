@@ -1,0 +1,24 @@
+<?php require_once '../../global.php';
+require '../../modules/pdo.php';
+pdo_get_connection();
+include '../../modules/loai.php';
+include '../khung.php';
+loai_insert($_POST['ten_loai'],$_POST['hinh']);
+$id_loai = $_GET['id'];
+$loai_select = loai_getinfo($id_loai);
+
+?>
+<main>
+<form action="" method="post" enctype="multipart/form-data">
+<span class="link_name" style="color: #000;font-weight: 600;">Tên loại</span>
+<input type="text" name="ten_loai"  id="" placeholder="Nhập tên loại">
+<span><?php echo $nameError ?></span>
+<span class="link_name" style="color: #000;font-weight: 600;">Hình ảnh</span>
+<input type="file" name="hinh" class='file' id="" placeholder="Chọn hình ảnh">
+<span><?php echo $imageError ?></span>
+<input type="submit" class='button' name="btn-add" value="Thêm">    
+</form>
+</main>
+</body>
+
+</html>
